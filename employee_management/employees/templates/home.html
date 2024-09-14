@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Employee Profiles</h1>
+<a href="{% url 'add_employee' %}">Add New Employee</a>
+<ul>
+    {% for employee in employees %}
+    <li>
+        <strong>{{ employee.name }}</strong> - {{ employee.designation }}<br>
+        {{ employee.description }}<br>
+        <a href="{% url 'update_employee' employee.pk %}">Edit</a> |
+        <a href="{% url 'delete_employee' employee.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
